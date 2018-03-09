@@ -11,10 +11,10 @@
 ////////////////////////////////////////////////////////////////////////////////////
 //
 //
-//  File    : strutils.hpp
+//  File    : config.hpp
 //  Author  : Anthony Islas
-//  Purpose : A set of string utilities not essential or specific to implementation
-//  Group   : Components
+//  Purpose : Configuration values derived from CMake
+//  Group   : None
 //
 //  TODO    : None
 //
@@ -22,29 +22,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __STRUTILS_H__
-#define __STRUTILS_H__
+#ifndef __CONFIG_H__
+#define __CONFIG_H__
 
-#include <string>
-#include <cstring>
-#include <sstream>
-#include <vector>
-
-namespace components
-{
-
-void split( char delim,
-            const std::string &s,  
-            std::vector< std::string > &vElems, 
-            bool bRemoveDelim = true );
-void split( char delim, std::vector< std::string>& rElems );
-
-std::vector< std::string > split( char delim,
-                                  const std::string &s );
-std::vector< std::string > split( char pDelims[],
-                                  const std::string &s );
-bool isWhiteSpace( std::string s );
-
-} // namespace components
+#cmakedefine PROJECT_VERSION  "@PROJECT_VERSION@"
+#cmakedefine TEST_RESOURCES   "@TEST_RESOURCES@"
 
 #endif
