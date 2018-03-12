@@ -24,6 +24,9 @@
 #ifndef __RESOURCES_MANAGER_H__
 #define __RESOURCES_MANAGER_H__
 
+#include <vector>
+#include <map>
+
 namespace components
 {
 
@@ -38,9 +41,9 @@ public:
   virtual ~Manager();
 
   void addItem( Item item, Tag tag );
-  Item getItem( Tag tag );
+  Item* getItem( Tag tag );
 
-  std::vector< Items > getItems( );
+  std::vector< Item > getItems( );
   
 protected:
 
@@ -52,7 +55,7 @@ protected:
 
 //**********************************************************************************
 //
-//  Manager::Manager
+//  Manager< Item, Tag >::Manager
 //
 //  \brief A generic manager for resources management
 //
@@ -60,14 +63,14 @@ protected:
 //
 //**********************************************************************************
 template< typename Item, typename Tag >
-Manager::Manager( )
+Manager< Item, Tag >::Manager( )
 {
   items_.clear( );
 }
 
 //**********************************************************************************
 //
-//  Manager::~Manager
+//  Manager< Item, Tag >::~Manager
 //
 //  \brief DTOR
 //
@@ -75,7 +78,7 @@ Manager::Manager( )
 //
 //**********************************************************************************
 template< typename Item, typename Tag >
-Manager::~Manager( )
+Manager< Item, Tag >::~Manager( )
 {
 
   items_.clear( );
@@ -84,7 +87,7 @@ Manager::~Manager( )
 
 //**********************************************************************************
 //
-//  Manager::addItem
+//  Manager< Item, Tag >::addItem
 //
 //  \brief Add an item to the resource pool
 // 
@@ -97,7 +100,8 @@ Manager::~Manager( )
 //
 //**********************************************************************************
 template< typename Item, typename Tag >
-Manager::addItem( Item item, Tag tag )
+void
+Manager< Item, Tag >::addItem( Item item, Tag tag )
 {
 
 }
@@ -105,7 +109,7 @@ Manager::addItem( Item item, Tag tag )
 
 //**********************************************************************************
 //
-//  Manager::getItem
+//  Manager< Item, Tag >::getItem
 //
 //  \brief Get an item from the resource pool
 // 
@@ -117,14 +121,15 @@ Manager::addItem( Item item, Tag tag )
 //
 //**********************************************************************************
 template< typename Item, typename Tag >
-Manager::getItem( Tag tag )
+Item*
+Manager< Item, Tag >::getItem( Tag tag )
 {
 
 }
 
 //**********************************************************************************
 //
-//  Manager::getItems
+//  Manager< Item, Tag >::getItems
 //
 //  \brief Get all items in the resource pool
 // 
@@ -135,12 +140,13 @@ Manager::getItem( Tag tag )
 //
 //**********************************************************************************
 template< typename Item, typename Tag >
-void Manager::getItems( )
+std::vector< Item >
+Manager< Item, Tag >::getItems( )
 {
   
   
   
-} // Manager::getItems
+} // Manager< Item, Tag >::getItems
 
 
 } // namespace resources
